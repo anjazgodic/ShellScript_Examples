@@ -1,0 +1,23 @@
+#!/bin/bash
+
+#SBATCH -t 200:00:00
+#SBATCH -n 1
+#SBATCH --mem=20GB
+
+#SBATCH -J cusum1
+
+cd ~/cusum
+
+#SBATCH -o results-%j.out
+#SBATCH -e results-%j.out
+
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=anja_zgodic@brown.edu
+
+module load R/2.15.2
+
+srun R CMD BATCH ./jointGLM1.R
+
+
+
+
